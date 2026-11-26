@@ -1,0 +1,69 @@
+{
+  "synthetic": true,
+  "commands": [
+    {
+      "id": "intercept-A",
+      "operation": "intercept",
+      "refs": [
+        "order-A",
+        "item-B"
+      ],
+      "request": {
+        "shipment": "SHIP-A"
+      },
+      "response_status": 504,
+      "observations": [
+        {
+          "state": "pending"
+        },
+        {
+          "state": "not_intercepted",
+          "carrier_revision": 3,
+          "picked_up_at": "2026-12-05T09:58:00+08:00"
+        }
+      ]
+    },
+    {
+      "id": "refund-A",
+      "operation": "refund",
+      "refs": [
+        "order-A",
+        "item-B"
+      ],
+      "request": {
+        "order": "order-A",
+        "item": "item-B",
+        "amount": 8900
+      },
+      "response_status": 504,
+      "observations": [
+        {
+          "state": "pending"
+        },
+        {
+          "state": "paid",
+          "amount": 8900,
+          "voucher": "REF-1"
+        }
+      ]
+    },
+    {
+      "id": "exchange-ship",
+      "operation": "ship",
+      "refs": [
+        "item-C"
+      ],
+      "request": {
+        "item": "item-C",
+        "order": "order-A"
+      },
+      "response_status": 202,
+      "observations": [
+        {
+          "state": "rejected",
+          "reason": "尚未交运"
+        }
+      ]
+    }
+  ]
+}

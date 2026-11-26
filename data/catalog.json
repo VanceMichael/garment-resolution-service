@@ -1,0 +1,148 @@
+{
+  "synthetic": true,
+  "records": [
+    {
+      "id": "batch-A",
+      "kind": "batch",
+      "refs": [],
+      "style": "dress-1",
+      "color": "blue",
+      "supplier": "supplier-A"
+    },
+    {
+      "id": "batch-B",
+      "kind": "batch",
+      "refs": [],
+      "style": "dress-1",
+      "color": "blue",
+      "supplier": "supplier-B"
+    },
+    {
+      "id": "batch-C",
+      "kind": "batch",
+      "refs": [],
+      "style": "dress-1",
+      "color": "blue",
+      "supplier": "supplier-C"
+    },
+    {
+      "id": "item-A",
+      "kind": "garment",
+      "refs": [
+        "batch-A"
+      ],
+      "serial": "cloth-A"
+    },
+    {
+      "id": "item-B",
+      "kind": "garment",
+      "refs": [
+        "batch-B"
+      ],
+      "serial": "cloth-B"
+    },
+    {
+      "id": "item-C",
+      "kind": "garment",
+      "refs": [
+        "batch-C"
+      ],
+      "serial": "cloth-C"
+    },
+    {
+      "id": "order-A",
+      "kind": "order",
+      "refs": [],
+      "customer": "customer-A",
+      "lines": [
+        {
+          "item": "item-A",
+          "paid": 8900
+        },
+        {
+          "item": "item-B",
+          "paid": 8900
+        }
+      ]
+    },
+    {
+      "id": "box-A",
+      "kind": "repack",
+      "refs": [
+        "item-A",
+        "item-B"
+      ],
+      "from_box": "wholesale-1",
+      "to_box": "retail-1"
+    },
+    {
+      "id": "complaint-A",
+      "kind": "complaint_input",
+      "refs": [
+        "order-A",
+        "item-B"
+      ],
+      "description": "穿着刺痒",
+      "reporter": "customer-A"
+    },
+    {
+      "id": "complaint-unknown",
+      "kind": "complaint_input",
+      "refs": [],
+      "style": "dress-1",
+      "color": "blue",
+      "shop": "shop-A",
+      "purchase_date": "2026-12-02",
+      "batch": null
+    },
+    {
+      "id": "report-B",
+      "kind": "quality_report",
+      "refs": [
+        "batch-B"
+      ],
+      "digest": "4444444444444444444444444444444444444444444444444444444444444444",
+      "conclusion": "人工确认不符合合成约定",
+      "signed_by": "quality-A"
+    },
+    {
+      "id": "replacement-A",
+      "kind": "customer_choice",
+      "refs": [
+        "order-A",
+        "item-B",
+        "item-C"
+      ],
+      "choice": "exchange",
+      "at": "2026-12-05T10:00:00+08:00"
+    },
+    {
+      "id": "report-C",
+      "kind": "quality_report",
+      "refs": [
+        "batch-C"
+      ],
+      "digest": "5555555555555555555555555555555555555555555555555555555555555555",
+      "conclusion": "人工确认暂停供货",
+      "signed_by": "quality-B"
+    },
+    {
+      "id": "return-B",
+      "kind": "return_input",
+      "refs": [
+        "item-B",
+        "order-A"
+      ],
+      "received_by": "warehouse-A",
+      "condition": "used"
+    }
+  ],
+  "principals": {
+    "customer-A": "consumer",
+    "merchant-A": "shop-A",
+    "warehouse-A": "warehouse",
+    "quality-A": "quality",
+    "quality-B": "quality",
+    "reviewer-A": "independent-aftercare"
+  }
+}
